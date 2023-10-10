@@ -1,5 +1,5 @@
 import styles from "./page.module.scss";
 
-export default function Home() {
+export default function Blog() {
   return <main></main>;
 }
