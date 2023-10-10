@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Gallery {
+	id               String @id @default(auto()) @map("_id") @db.ObjectId
+	image            String @unique
+	device           String
+	exposure         String
+	shutterSpeed     String
+	aperture         String
+	iso              String
+	location         String
+	date             DateTime
+	isVisible        Boolean
+	numberOfVue      Int @default(0)
+}
+
+model Project {
+	id            String @id @default(auto()) @map("_id") @db.ObjectId
+	title         String @unique 
+	description   String 
+	bannersUrls       String[] // urls des bannières du projet
+	date          DateTime @default(now()) // date de lancement du projet
+	tools         Tool[] 
+  workers       Worker[] 
+	context       String // contexte de travail : projet de cours, perso, entreprise ...
+	numberOfVue   Int @default(0)
+}
+
+model Tool {
+	id           String @id @default(auto()) @map("_id") @db.ObjectId
+	name         String @unique // nom de l'outil en question
+	icon         String // icon fontawesome de l'outil
+
+	// intégration de la relation avec le model Project
+	Project      Project? @relation(fields: [projectId], references: [id])
+	projectId     String? @db.ObjectId
+}
+
+model Worker {
+	id           String @id @default(auto()) @map("_id") @db.ObjectId
+	name         String
+	firstName    String 
+	linkedInUrl  String 
+	websiteUrl   String?
+	Project      Project? @relation(fields: [projectId], references: [id])
+	projectId    String? @db.ObjectId
+}
+
+model Article {
+	id            String @id @default(auto()) @map("_id") @db.ObjectId
+	title         String @unique
+	image         String // url
+	tags          String[]
+	content       String // contenu de l'article stocké en markdown
+	numberOfVue   Int @default(0)
+  comments      Comment[]
+}
+
+model Comment {
+	id          String @id @default(auto()) @map("_id") @db.ObjectId
+	content     String
+	username    String
+	loginType   LoginType
+  Article     Article? @relation(fields: [articleId], references: [id])
+  articleId   String? @db.ObjectId
+}
+
+enum LoginType {
+	GITHUB
+}
