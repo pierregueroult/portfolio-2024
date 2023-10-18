@@ -1,5 +1,11 @@
 import styles from "./page.module.scss";
 
-export default function BlogArticle() {
+interface BlogArticleProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function BlogArticle({ params: { id } }: BlogArticleProps) {
   return <main></main>;
 }

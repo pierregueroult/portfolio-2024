@@ -1,9 +1,12 @@
 import "./globals.scss";
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 
-const font: NextFontWithVariable = Inter({
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+
+const font: NextFontWithVariable = Raleway({
   subsets: ["latin"],
   display: "swap",
   variable: "--font",
@@ -21,7 +24,11 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="fr" dir="ltr" className={font.variable}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

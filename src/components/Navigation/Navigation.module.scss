@@ -1,0 +1,29 @@
+@use "../../app/variables.scss" as *;
+
+.navigation {
+  display: flex;
+}
+
+.line {
+  border-width: 1px;
+  border-color: map-get($primary, "default");
+  border-style: solid;
+  margin-top: 0.2rem;
+}
+
+.link {
+  font-family: var(--font);
+  position: relative;
+  text-decoration: none;
+  color: map-get($primary, "darkest");
+  transition: color 200ms ease-in-out;
+  font-size: 1.1rem;
+  padding: 0 1rem;
+}
+
+.text {
+  margin-bottom: 1rem;
+  &.active {
+    color: map-get($primary, "default");
+  }
+}

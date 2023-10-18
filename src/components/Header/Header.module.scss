@@ -1,0 +1,51 @@
+@use "../../app/variables.scss" as *;
+
+$fontsize: 1.5;
+$gap: (80 - $fontsize * 16) / 2 + px;
+
+.header {
+  background-color: map-get($background, "default");
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  color: map-get($primary, "default");
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: $fontsize + rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+
+  padding-right: $gap;
+  padding-left: $gap;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+
+  span {
+    color: map-get($primary, "///");
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  a {
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 1rem;
+    color: map-get($primary, "///");
+  }
+}

@@ -11,3 +11,7 @@
   // --title is the variable for the title font family
   // --mono is the variable for the monospace font family
 }
+
+main {
+  height: calc(100vh - 80px - 300px);
+}

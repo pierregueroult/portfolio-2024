@@ -1,0 +1,29 @@
+@use "../../app/variables.scss" as *;
+
+.newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$height: 2.5rem;
+
+.input {
+  height: $height;
+  background-color: transparent;
+  border: 2px solid map-get($primary, "default");
+  font-family: var(--font);
+  outline: none;
+  color: map-get($primary, "default");
+  padding: 0.5rem;
+}
+
+.button {
+  height: $height;
+  background-color: map-get($primary, "default");
+  color: map-get($background, "default");
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  padding: 0.5rem;
+}

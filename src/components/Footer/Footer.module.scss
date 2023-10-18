@@ -1,0 +1,173 @@
+@use "../../app/variables.scss" as *;
+
+.footer {
+  background-color: map-get($background, "default");
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  height: 50%;
+  width: 100vw;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  gap: 1rem;
+}
+
+.line {
+  background-color: map-get($primary, "default");
+  width: 90%;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  left: 5%;
+}
+
+.socialMedia {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.item {
+  width: 45px;
+  border-radius: 50%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid map-get($primary, "default");
+    color: map-get($primary, "darker");
+    transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
+
+    &:hover {
+      color: map-get($primary, "default");
+      border: 2px solid map-get($primary, "darker");
+    }
+  }
+
+  span {
+    font-size: 0.8rem;
+    color: map-get($primary, "default");
+    text-align: center;
+    font-family: var(--font);
+    margin-top: 0.2rem;
+  }
+}
+
+.credits {
+  font-size: 0.8rem;
+  color: map-get($primary, "default");
+  font-family: var(--font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+
+  svg {
+    color: map-get($danger, "800");
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+}
+
+.containerRow {
+  height: 50%;
+  width: 100vw;
+  max-width: 1400px * 0.9;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: map-get($primary, "default");
+}
+
+.title {
+  font-size: 1.5rem;
+  color: map-get($primary, "default");
+  font-family: var(--font);
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: map-get($primary, "darker");
+  font-family: var(--font);
+  font-weight: 400;
+}
+
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+
+  &.variant {
+    flex-direction: column;
+  }
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  justify-items: center;
+
+  &.variant {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.link {
+  color: map-get($primary, "darker");
+  font-family: var(--font);
+  transition: color 0.2s ease-in-out;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  cursor: pointer;
+
+  > :global(.carbonbadge) {
+    span {
+      display: none;
+    }
+  }
+
+  &:hover {
+    color: map-get($primary, "default");
+  }
+}
+
+.separator {
+  height: 70%;
+  width: 2px;
+  background-color: map-get($primary, "default");
+}

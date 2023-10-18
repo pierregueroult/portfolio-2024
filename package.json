@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@prisma/client": "^5.4.2",
-    "next": "13.5.4",
+    "framer-motion": "^10.16.4",
+    "next": "^13.5.5",
     "next-auth": "^4.23.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-websitecarbon-badge": "^1.0.6",
     "sass": "^1.69.1"
   },
   "devDependencies": {

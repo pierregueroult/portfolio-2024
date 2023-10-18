@@ -1,0 +1,37 @@
+@use "../../app/variables.scss" as *;
+
+.search {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: map-get($primary, "default") solid 2px;
+  height: 35px;
+
+  svg {
+    color: map-get($primary, "default");
+    margin: 5px;
+    height: 18px;
+    width: 18px;
+  }
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  color: map-get($primary, "default");
+  font-family: var(--font);
+  font-size: 1rem;
+  outline: none;
+}
+
+.shortcut {
+  color: map-get($primary, "default");
+  background-color: map-get($background, "default");
+  font-family: var(--font);
+  font-size: 1rem;
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+}
