@@ -34,7 +34,7 @@ export default async function Home(): Promise<JSX.Element> {
 
   var projects: ProjectsWithToolsAndWorkers = await getProjects(4);
 
-  projects = [...projects, ...projects, ...projects, ...projects];
+  // projects = [...projects, ...projects, ...projects, ...projects];
 
   return (
     <main className={styles.main}>
@@ -183,7 +183,7 @@ export default async function Home(): Promise<JSX.Element> {
               <ul className={styles.journeyTechs}>
                 {Object.keys(techs).map((type: string) => (
                   <li key={type}>
-                    <h4>{type}</h4>
+                    <h2>{type}</h2>
                     <ul className="list-animation">
                       {techs[type].map(tech => (
                         <Fragment key={tech.id}>
@@ -195,7 +195,12 @@ export default async function Home(): Promise<JSX.Element> {
                             }
                           >
                             {tech.name}
-                            <Image src={tech.icon} width={64} height={64} alt={tech.name} />
+                            <Image
+                              src={tech.icon}
+                              width={64}
+                              height={64}
+                              alt={`Icône de ${tech.name}`}
+                            />
                           </li>
                         </Fragment>
                       ))}

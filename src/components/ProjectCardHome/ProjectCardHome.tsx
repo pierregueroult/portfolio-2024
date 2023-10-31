@@ -31,7 +31,7 @@ export default function ProjectCardHome({ project }: ProjectCardHomeProps) {
         </div>
         <div className={styles.content}>
           <div className={styles.title}>
-            <h4>{project.title}</h4>
+            <h2>{project.title}</h2>
             <p>
               {project.type === "website"
                 ? "Site Web"

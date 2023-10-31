@@ -44,9 +44,7 @@ export default function HorizontalScroll({ children }: HorizontalScrollProps): R
           ease: "none",
         });
 
-        const colors: string[] = ["blue", "yellow", "red", "green"];
-
-        console.log(listAnimation.length);
+        // const colors: string[] = ["blue", "yellow", "red", "green"];
 
         listAnimation.forEach((element: Element, index: number) => {
           gsap.fromTo(
