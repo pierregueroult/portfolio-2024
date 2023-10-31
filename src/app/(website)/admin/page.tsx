@@ -5,7 +5,7 @@ import getViewsOf, { tables } from "@/contents/getViewsOf";
 export default async function Admin() {
   const articlesViews = await getViewsOf({ table: tables.ARTICLE });
   const projectsViews = await getViewsOf({ table: tables.PROJECT });
-  const imagesViews = await getViewsOf({ table: tables.IMAGE });
+  const imagesViews = await getViewsOf({ table: tables.PHOTO });
 
   return (
     <>
