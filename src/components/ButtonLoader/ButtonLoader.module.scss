@@ -1,0 +1,35 @@
+@use "../../app/variables.scss" as *;
+
+.element {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: map-get($primary, "faded");
+
+  @for $i from 1 through 3 {
+    &:nth-child(#{$i}) {
+      animation: loading 0.6s ease-in-out #{$i * 0.2}s infinite;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}

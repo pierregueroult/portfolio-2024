@@ -4,6 +4,14 @@
   text-decoration: none;
   font-family: var(--font);
   font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-width: 0.2rem;
+  border-style: solid;
+  cursor: pointer;
 }
 
 .disabled {
@@ -30,31 +38,31 @@
 }
 
 .primary {
-  background-color: map-get($primary, "lighter");
-  color: map-get($primary, "darkest");
-  border: solid 0.1rem map-get($primary, "darkest");
+  background-color: map-get($primary, "300");
+  color: map-get($primary, "900");
+  border-color: map-get($primary, "900");
 }
 
 .secondary {
-  background-color: map-get($secondary, "lightest");
-  color: map-get($secondary, "darkest");
-  border: solid 0.1rem map-get($secondary, "darkest");
+  background-color: map-get($secondary, "200");
+  color: map-get($secondary, "800");
+  border-color: map-get($secondary, "800");
 }
 
 .warning {
   background-color: map-get($warning, "300");
   color: map-get($warning, "900");
-  border: solid 0.1rem map-get($warning, "900");
+  border-color: map-get($warning, "900");
 }
 
 .danger {
   background-color: map-get($danger, "300");
   color: map-get($danger, "900");
-  border: solid 0.1rem map-get($danger, "900");
+  border-color: map-get($danger, "900");
 }
 
 .success {
   background-color: map-get($success, "300");
   color: map-get($success, "900");
-  border: solid 0.1rem map-get($success, "900");
+  border-color: map-get($success, "900");
 }

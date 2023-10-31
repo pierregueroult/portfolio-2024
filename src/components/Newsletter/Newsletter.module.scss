@@ -11,19 +11,21 @@ $height: 2.5rem;
 .input {
   height: $height;
   background-color: transparent;
-  border: 2px solid map-get($primary, "default");
+  border: 2px solid map-get($primary, "highlight");
   font-family: var(--font);
   outline: none;
-  color: map-get($primary, "default");
+  color: map-get($primary, "highlight");
   padding: 0.5rem;
 }
 
 .button {
   height: $height;
-  background-color: map-get($primary, "default");
+  background-color: map-get($primary, "highlight");
   color: map-get($background, "default");
   border: none;
   cursor: pointer;
   font-family: var(--font);
   padding: 0.5rem;
+  font-weight: 700;
+  min-width: 10ch;
 }

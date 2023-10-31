@@ -1,0 +1,112 @@
+@use "../../../../variables.scss" as *;
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: map-get($background, "dark");
+}
+
+.section {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 4/3;
+  background-color: map-get($background, "default");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: map-get($primary, "default");
+  font-family: var(--font);
+  text-transform: uppercase;
+  width: 90%;
+  line-height: 0.7;
+  margin-top: 2rem;
+}
+
+.subtitle {
+  width: 90%;
+  font-size: 2rem;
+  font-weight: 500;
+  color: map-get($primary, "highlight");
+  font-family: var(--display);
+  text-transform: lowercase;
+  font-style: italic;
+  line-height: 0.7;
+}
+
+.paragraph {
+  width: 90%;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: map-get($primary, "default");
+  font-family: var(--font);
+  line-height: 1.5;
+  text-align: justify;
+  margin-top: 1rem;
+
+  a {
+    color: map-get($primary, "highlight");
+    font-style: italic;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: map-get($primary, "faded");
+    }
+  }
+}
+
+.link {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: var(--display);
+  text-transform: lowercase;
+  color: map-get($primary, "highlight");
+  font-style: italic;
+  transition: color 0.3s ease-in-out;
+  width: fit-content;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+  }
+
+  &::before {
+    background-color: map-get($primary, "highlight");
+  }
+
+  &::after {
+    background-color: map-get($primary, "default");
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: map-get($primary, "faded");
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

@@ -36,11 +36,9 @@ export default function HeaderSearch({ placeholder, shortcut }: HeaderSearchProp
       }
     }
 
-    shortcutElement.addEventListener("click", focusSearch);
     document.addEventListener("keypress", handleKeydown);
 
     return () => {
-      shortcutElement.removeEventListener("click", focusSearch);
       document.removeEventListener("keypress", handleKeydown);
     };
   }, [shortcut]);
@@ -68,9 +66,6 @@ export default function HeaderSearch({ placeholder, shortcut }: HeaderSearchProp
         ref={inputRef}
         onChange={event => setSearch(event.target.value)}
       />
-      <p className={styles.shortcut} ref={shorcutRef}>
-        {shortcut[0]}
-      </p>
     </form>
   );
 }

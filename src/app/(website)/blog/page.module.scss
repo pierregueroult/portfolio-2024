@@ -1,0 +1,132 @@
+@use "../../variables.scss" as *;
+
+.title {
+  font-size: 7rem;
+  font-weight: bold;
+  text-align: center;
+  color: map-get($primary, "default");
+  text-transform: uppercase;
+  font-family: var(--font);
+  line-height: 0.8;
+  margin: 5rem 0;
+
+  span {
+    font-family: var(--display);
+    text-transform: lowercase;
+    color: map-get($primary, "highlight");
+    font-style: italic;
+    font-size: 5rem;
+  }
+}
+
+.articleContainer {
+  margin: 5rem 0;
+}
+
+.smallArticles {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  li {
+    width: 22%;
+    list-style: none;
+  }
+}
+
+.mediumArticles {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  li {
+    width: 45%;
+    list-style: none;
+  }
+}
+
+.latest {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.description {
+  width: 35%;
+
+  .icon {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+
+    li {
+      background-color: map-get($background, "default");
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        height: 50%;
+        width: 50%;
+        color: map-get($primary, "highlight");
+        transition: color 0.3s ease-in-out;
+
+        &:global(.empire) {
+          color: map-get($danger, "500") !important;
+          cursor: pointer;
+        }
+
+        path {
+          transition: opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    color: map-get($primary, "default");
+    text-transform: uppercase;
+    font-family: var(--font);
+
+    span {
+      font-family: var(--display);
+      text-transform: lowercase;
+      color: map-get($primary, "highlight");
+      font-style: italic;
+      font-size: 2.2rem;
+      margin: 0 0.5rem;
+    }
+  }
+
+  .descriptionText {
+    font-size: 1.6rem;
+    color: map-get($primary, "default");
+    font-family: var(--font);
+    line-height: 1.5;
+  }
+
+  .link {
+    font-size: 1.6rem;
+    color: map-get($primary, "highlight");
+    font-family: var(--font);
+    text-decoration: underline;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    svg {
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+  }
+}

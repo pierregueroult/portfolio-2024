@@ -1,0 +1,769 @@
+@use "../variables.scss" as *;
+
+.mainImage {
+  width: 105vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  object-fit: cover;
+  z-index: 40;
+  left: -2.5vw;
+  object-position: 0% 0%;
+}
+
+.landing {
+  height: calc(100vh - 80px);
+  width: 100vw;
+  padding-top: 80px;
+  position: relative;
+  z-index: 41 !important;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+
+  .landingContainer {
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    max-width: 950px;
+
+    @media screen and (max-width: 600px) {
+      background-color: map-get($background, "dark");
+      border-radius: 5px;
+    }
+
+    .landingText {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+      p {
+        font-size: 1.5rem;
+        font-weight: 400;
+        font-family: var(--font);
+        color: map-get($background, "darker");
+        @media screen and (max-width: 600px) {
+          color: map-get($primary, "default");
+        }
+        text-align: left;
+        line-height: 1.5;
+        font-weight: 600;
+        padding: 1.3rem;
+        width: 100%;
+
+        strong {
+          font-weight: 700;
+          color: map-get($primary, "faded");
+        }
+      }
+
+      a,
+      button {
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-family: var(--display);
+        text-transform: lowercase;
+        color: map-get($background, "darker");
+
+        @media screen and (max-width: 600px) {
+          color: map-get($primary, "default");
+          margin-bottom: 2rem;
+        }
+
+        font-style: italic;
+        transition: color 0.3s ease-in-out;
+        width: fit-content;
+        text-decoration: none;
+        position: relative;
+        padding: 0.5rem;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+
+        svg {
+          position: relative;
+          top: 2px;
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          bottom: -2px;
+          left: 0;
+        }
+
+        &::before {
+          background-color: map-get($primary, "faded");
+        }
+
+        &::after {
+          background-color: map-get($primary, "default");
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover {
+          color: map-get($primary, "default");
+
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+
+    .landingImage {
+      width: 30%;
+
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+        transform: scaleX(-1);
+
+        box-shadow: -10px 10px 0px 2px map-get($background, "darker");
+      }
+    }
+  }
+
+  .title {
+    margin-top: 12vh;
+    h1 {
+      font-size: 6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-family: var(--font);
+      color: map-get($background, "darker");
+      text-align: left;
+      line-height: 0.8;
+      text-align: center;
+      font-weight: 800;
+
+      @media screen and (max-width: 600px) {
+        font-size: 5rem;
+      }
+
+      @media screen and (max-width: 450px) {
+        font-size: 4rem;
+      }
+
+      span {
+        color: map-get($primary, "faded");
+        font-family: var(--display);
+        font-style: italic;
+        text-transform: lowercase;
+        font-size: 3.5rem;
+
+        @media screen and (max-width: 600px) {
+          font-size: 2.5rem;
+        }
+
+        @media screen and (max-width: 450px) {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.summary {
+  height: 70vh;
+  width: 100vw;
+  background-color: map-get($background, "default");
+
+  @media screen and (max-width: 1100px) {
+    height: auto;
+    z-index: 42 !important;
+  }
+
+  .panel {
+    position: absolute;
+    height: 80%;
+    left: 15vw;
+    width: 47vw;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    @media screen and (max-width: 1100px) {
+      position: relative;
+      top: unset;
+      left: unset;
+      right: unset;
+      bottom: unset;
+      height: auto;
+      width: 80vw;
+      transform: none;
+      margin: 0 auto;
+      padding: 5rem 0;
+    }
+
+    h2 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-family: var(--font);
+      color: map-get($primary, "default");
+      text-align: left;
+      line-height: 0.8;
+
+      span {
+        color: map-get($primary, "highlight");
+        font-family: var(--display);
+        font-style: italic;
+        text-transform: lowercase;
+        font-size: 3rem;
+        margin-left: 1rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      font-family: var(--font);
+      color: map-get($primary, "default");
+      text-align: left;
+      line-height: 1.5;
+
+      strong {
+        font-weight: 700;
+        color: map-get($primary, "highlight");
+      }
+    }
+
+    .buttonContainer {
+      display: flex;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 4rem;
+
+      @media screen and (max-width: 650px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+    }
+
+    a,
+    button {
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-family: var(--display);
+      text-transform: lowercase;
+      color: map-get($primary, "highlight");
+      font-style: italic;
+      transition: color 0.3s ease-in-out;
+      width: fit-content;
+      text-decoration: none;
+      position: relative;
+      padding: 0.5rem;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      cursor: pointer;
+
+      svg {
+        position: relative;
+        top: 2px;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+      }
+
+      &::before {
+        background-color: map-get($primary, "highlight");
+      }
+
+      &::after {
+        background-color: map-get($primary, "default");
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      &:hover {
+        color: map-get($primary, "faded");
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
+
+.last {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main {
+  position: relative;
+
+  section {
+    position: relative;
+    z-index: 39;
+    margin: 0 auto;
+  }
+}
+
+.contact {
+  height: auto;
+  width: 100vw;
+  background-color: map-get($background, "dark");
+  overflow: hidden;
+}
+
+.contactContainer {
+  height: 40vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+  align-items: center;
+
+  @media screen and (max-width: 1300px) {
+    height: auto;
+  }
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+}
+
+.topics {
+  max-width: 35vw;
+
+  @media screen and (max-width: 1000px) {
+    max-width: 90vw;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font);
+    color: map-get($primary, "default");
+    text-align: center;
+
+    @media screen and (max-width: 1300px) {
+      font-size: 2rem;
+      padding-top: 1rem;
+    }
+  }
+}
+
+.topicsList {
+  width: 100%;
+  display: flex;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.topic {
+  list-style: none;
+  font-family: var(--display);
+  text-transform: lowercase;
+  color: map-get($primary, "highlight");
+  font-style: italic;
+  font-size: 1.6rem;
+  position: relative;
+  text-align: center;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    width: calc(100% + 1.5rem);
+    height: 100%;
+    background-color: map-get($primary, "default");
+    position: absolute;
+    top: 0;
+    left: -0.5rem;
+    z-index: -1;
+    clip-path: polygon(10px 0, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    width: 0;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: map-get($primary, "faded");
+
+    &::before {
+      width: calc(100% + 1.5rem);
+    }
+  }
+}
+
+.projects {
+  height: 100vh;
+  width: 120vw;
+  background-color: map-get($background, "dark");
+  overflow: hidden;
+
+  @media screen and (max-width: 950px) {
+    width: 100vw;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: auto;
+  }
+}
+
+.projectsContainer {
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
+  padding: 80px 0;
+
+  @media screen and (max-width: 950px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 10%;
+    row-gap: 2vh;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    row-gap: 2rem;
+  }
+}
+
+.journey {
+  height: 100vh;
+  width: 120vw;
+  background-color: map-get($background, "default");
+
+  @media screen and (max-width: 950px) {
+    width: 100vw;
+    height: auto;
+  }
+}
+
+.journeyContainer {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+
+  @media screen and (max-width: 1100px) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 950px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.journeyLeft {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+
+  @media screen and (max-width: 1100px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 950px) {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+
+.journeyTitle {
+  font-size: 4.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-family: var(--font);
+  color: map-get($primary, "default");
+  text-align: left;
+  line-height: 0.8;
+  font-weight: 800;
+  margin: 4rem 0 4rem 4rem;
+
+  @media screen and (max-width: 950px) {
+    padding: 0;
+    font-size: 3rem;
+  }
+
+  @media screen and (max-width: 1100px) {
+    margin: 2rem 0 2rem 0;
+    // width: 50%;
+  }
+
+  span {
+    color: map-get($primary, "highlight");
+    font-family: var(--display);
+    font-style: italic;
+    text-transform: lowercase;
+    font-size: 3rem;
+    margin-left: 1rem;
+    font-weight: 600;
+
+    @media screen and (max-width: 950px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.journeyArrow {
+  background-color: blue;
+  height: 80px;
+  width: calc(100% + 120px);
+  position: absolute;
+  top: 13rem;
+}
+
+.journeyArrowPart {
+  position: absolute;
+  width: 80px;
+  height: 50vh;
+  top: 0;
+  right: 0;
+  background-color: blue;
+}
+
+.journeyTechs {
+  width: calc(100% - 4rem);
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem 0 4rem 4rem;
+
+  @media screen and (max-width: 1100px) {
+    // width: 50%;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font);
+    color: map-get($primary, "default");
+    text-align: left;
+    font-weight: 800;
+    max-width: 100%;
+  }
+
+  li {
+    list-style: none;
+
+    @media screen and (max-width: 1350px) {
+      width: 30%;
+    }
+
+    @media screen and (max-width: 1100px) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+    @media screen and (max-width: 1100px) {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    li {
+      list-style: none;
+      font-family: var(--display);
+      text-transform: lowercase;
+      color: map-get($primary, "highlight");
+      font-style: italic;
+      font-size: 1.2rem;
+      position: relative;
+      transition: color 0.3s ease-in-out;
+      cursor: pointer;
+      text-decoration: underline;
+      position: relative;
+      width: fit-content;
+      transition: color 300ms ease-in-out;
+
+      &:hover {
+        color: var(--tech-color);
+
+        img {
+          opacity: 1;
+        }
+      }
+
+      img {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        right: -70px;
+        transition: opacity 300ms ease-in-out;
+      }
+    }
+  }
+}
+
+.journeyRight {
+  width: calc(45% - 40px);
+  margin-left: 40px;
+
+  @media screen and (max-width: 1100px) {
+    margin-left: 0;
+  }
+
+  @media screen and (max-width: 950px) {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  > p {
+    width: 80%;
+    text-align: center;
+    font-size: 1rem;
+    color: map-get($primary, "default");
+    font-family: var(--font);
+    margin: 0 15% 0 5%;
+
+    @media screen and (max-width: 950px) {
+      margin: 0 auto;
+    }
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font);
+    color: map-get($primary, "default");
+    text-align: left;
+    line-height: 0.8;
+    font-weight: 800;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+
+    @media screen and (max-width: 1100px) {
+      margin: 2rem 0;
+    }
+
+    &:first-of-type {
+      @media screen and (max-width: 1100px) {
+        margin-top: 4rem;
+      }
+      @media screen and (max-width: 950px) {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.journey > :first-child,
+.projects > :first-child {
+  padding-top: 80px;
+}
+
+.arrowLink {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: var(--display);
+  text-transform: lowercase;
+  color: map-get($primary, "highlight");
+  font-style: italic;
+  transition: color 0.3s ease-in-out;
+  width: fit-content;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: all;
+
+  svg {
+    position: relative;
+    top: 2px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+  }
+
+  &::before {
+    background-color: map-get($primary, "highlight");
+  }
+
+  &::after {
+    background-color: map-get($primary, "default");
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: map-get($primary, "faded");
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

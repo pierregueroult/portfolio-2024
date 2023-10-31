@@ -1,15 +1,26 @@
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.scss";
 import { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Playfair_Display, Raleway, Red_Hat_Mono } from "next/font/google";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
+import { ToastContainer } from "react-toastify";
 
 const font: NextFontWithVariable = Raleway({
   subsets: ["latin"],
   display: "swap",
   variable: "--font",
+});
+
+const display: NextFontWithVariable = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--display",
+});
+
+const mono: NextFontWithVariable = Red_Hat_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--mono",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +34,21 @@ interface Props {
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang="fr" dir="ltr" className={font.variable}>
+    <html lang="fr" dir="ltr" className={`${font.variable} ${mono.variable} ${display.variable}`}>
       <body>
-        <Header />
         {children}
-        <Footer />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          draggable
+          pauseOnHover
+          theme="dark"
+          limit={3}
+        />
       </body>
     </html>
   );

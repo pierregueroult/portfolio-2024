@@ -5,20 +5,16 @@ import Navigation from "../Navigation/Navigation";
 
 export default function Header(): JSX.Element {
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} header`}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Pierre Guéroult - Portfolio 2024</h1>
+        <h1 className={styles.title}>PIERREGUEROULT.DEV</h1>
         <nav className={styles.breadcrumbs}>
           <Breadcrumbs />
         </nav>
       </div>
       <div className={styles.container}>
         <Navigation />
-        <Search
-          targetSelector="#main"
-          placeholder="Rechercher où aller à ..."
-          shortcut={["/", ":"]}
-        />
+        <Search placeholder="Rechercher sur le site ..." shortcut={["/", ":"]} />
       </div>
     </header>
   );

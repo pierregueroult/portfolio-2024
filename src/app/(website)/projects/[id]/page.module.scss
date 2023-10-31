@@ -1,0 +1,205 @@
+@use "../../../variables.scss" as *;
+
+.main {
+  width: calc(100vw - 20px);
+}
+
+.container {
+  max-width: 100%;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+
+  > img {
+    width: 50%;
+    aspect-ratio: 2;
+    height: unset !important;
+  }
+
+  > div {
+    width: 40%;
+  }
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: var(--font);
+  text-align: center;
+  color: map-get($primary, "default");
+}
+
+.description {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  font-family: var(--font);
+  text-align: center;
+  color: map-get($primary, "dark");
+  margin: 0 auto;
+}
+
+.tools {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  font-family: var(--font);
+  text-align: center;
+  color: map-get($primary, "dark");
+  margin: 0 auto;
+  margin-top: 1rem;
+
+  span {
+    color: map-get($primary, "default");
+    text-decoration: underline;
+    margin-left: 1rem;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: map-get($primary, "light");
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+
+  .imagesContainer {
+    width: 70%;
+
+    img {
+      width: 100%;
+      height: auto !important;
+    }
+  }
+
+  .aside {
+    width: 30%;
+    position: sticky;
+    height: 90vh;
+    top: 5vh;
+
+    .context {
+      width: 100%;
+      font-family: var(--font);
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 2rem;
+      text-decoration: underline;
+      color: map-get($primary, "default");
+    }
+  }
+}
+
+.asideTools {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-left: 5%;
+  margin-top: 0.5rem;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+    border: map-get($primary, "default") 2px solid;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 10px;
+    gap: 0.5rem;
+    width: 90%;
+
+    svg {
+      color: map-get($primary, "darker");
+    }
+
+    span {
+      color: map-get($primary, "default");
+      font-family: var(--font);
+    }
+  }
+}
+
+.role {
+  font-size: 0.8rem;
+
+  color: map-get($primary, "darker");
+}
+
+.legend {
+  margin-left: 5%;
+  font-family: var(--font);
+  font-weight: 400;
+  color: map-get($primary, "darker");
+  margin-top: 1rem;
+}
+
+.worker {
+  margin-left: 5%;
+  width: 90%;
+  margin-top: 0.5rem;
+
+  .asset {
+    margin-top: 1rem;
+
+    a {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  .iframe {
+    width: 100%;
+    aspect-ratio: 1.6;
+    iframe {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+    border: map-get($primary, "default") 2px solid;
+    width: fit-content;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: center;
+    border-radius: 10px;
+    gap: 0.5rem;
+    width: 100%;
+
+    div {
+      a:first-child {
+        margin-right: 0.5rem;
+      }
+    }
+
+    svg {
+      color: map-get($primary, "darker");
+    }
+
+    span {
+      color: map-get($primary, "default");
+      font-family: var(--font);
+    }
+  }
+}

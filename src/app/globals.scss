@@ -1,3 +1,5 @@
+@use "./variables.scss" as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -6,12 +8,106 @@
   font: inherit;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+  background-color: map-get($background, "default");
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+
+  @media screen and (max-width: 1200px) {
+    header {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+  }
+
+  &.fixed-header {
+    .Toastify .Toastify__toast-container {
+      top: calc(80px + 0.5rem);
+      right: 0.5rem;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(map-get($background, "dark"), 1);
+    }
+
+    footer {
+      background: rgba(map-get($background, "dark"), 1);
+    }
+  }
+
+  &.no-footer > footer {
+    display: none;
+  }
+
+  &.no-header > header {
+    display: none;
+  }
+}
+
+::selection,
+::-moz-selection {
+  background-color: map-get($primary, "highlight");
+  color: map-get($background, "dark");
+}
+
 :root {
   // --font is the variable for the main font family
   // --title is the variable for the title font family
   // --mono is the variable for the monospace font family
+  --toastify-color-dark: #{map-get($background, "default")};
+  --toastify-color-error: #{map-get($danger, "500")};
+  --toastify-color-success: #{map-get($success, "500")};
+  --toastify-color-warning: #{map-get($warning, "500")};
 }
 
 main {
-  height: calc(100vh - 80px - 300px);
+  min-height: calc(100vh - 80px - 300px);
+  background-color: map-get($background, "dark");
+  width: 100vw;
+
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  background-color: map-get($background, "dark");
+  .hljs-keyword {
+    color: red;
+  }
+  .hljs-attr {
+    color: darkcyan;
+  }
+  .hljs-title {
+    color: orange;
+  }
+  .hljs-property {
+    color: white;
+  }
+  .hljs-string {
+    color: cyan;
+  }
+}
+
+img,
+a {
+  user-select: none;
+  -webkit-user-drag: none;
 }

@@ -4,22 +4,21 @@ import getSocialMedia from "@/contents/getSocialMedia";
 import Link from "next/link";
 import Newsletter from "../Newsletter/Newsletter";
 import CarbonBadgeElement from "../CarbonBadge/CarbonBadge";
-import { linksType } from "@/types/link";
 
 export default function Footer(): React.ReactNode {
   const socialMedia = getSocialMedia();
-  const links: linksType = getLinks();
+  const links = getLinks();
 
   links.push({ name: "Admin", href: "/admin" }, { name: "CV", href: "/curriculum-vitae" });
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} footer`}>
       <div className={styles.containerRow}>
         <div className={styles.subcontainer}>
           <div className={styles.logo}></div>
           <div>
             <h3 className={styles.title}>Portfolio 2024</h3>
-            <p className={styles.subtitle}>Pierre Guéroult</p>
+            <p className={styles.subtitle}>by Pierre Guéroult</p>
           </div>
         </div>
         <div className={styles.separator}></div>
@@ -58,7 +57,7 @@ export default function Footer(): React.ReactNode {
           <p className={styles.subtitle}>
             Me contacter à{" "}
             <a href="mailto:contact@pierregueroult.dev" className={styles.link}>
-              perso@pierregueroult.dev
+              contact@pierregueroult.dev
             </a>
           </p>
         </div>

@@ -1,0 +1,8 @@
+.horizontalContainer {
+  display: flex;
+
+  @media screen and (max-width: 950px) {
+    flex-direction: column;
+    width: 100vw !important;
+  }
+}

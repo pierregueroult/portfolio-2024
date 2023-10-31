@@ -1,0 +1,66 @@
+@use "../../../variables.scss" as *;
+
+.main {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100vw;
+  max-width: 500px;
+  background-color: map-get($background, "default");
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-family: var(--font);
+    color: map-get($primary, "default");
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    font-family: var(--font);
+    color: map-get($primary, "default");
+    text-align: center;
+
+    a {
+      color: map-get($primary, "lighter");
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    code {
+      font-family: var(--mono);
+      font-size: 1rem;
+      background-color: map-get($background, "dark");
+      padding: 5px;
+      border: map-get($primary, "darker") 2px solid;
+      padding: 0.5rem;
+    }
+  }
+
+  div {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    button,
+    a {
+      width: 45%;
+    }
+  }
+}

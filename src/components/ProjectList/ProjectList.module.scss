@@ -1,0 +1,134 @@
+@use "../../app/variables.scss" as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  gap: 80px;
+}
+
+.link {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  width: 100vw;
+  height: 10vh;
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+  color: map-get($primary, "highlight");
+  font-family: var(--font);
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+}
+
+.panel {
+  width: 550px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  aspect-ratio: 0.75;
+
+  .link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 87%;
+    position: relative;
+    margin-bottom: 3%;
+    overflow: hidden;
+    border-radius: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 19;
+      transition: filter 500ms ease-in-out;
+      border-radius: 20px;
+      overflow: hidden;
+
+      &:global(.hovered) {
+        filter: blur(5px);
+      }
+    }
+
+    video {
+      position: absolute;
+      z-index: 20;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+
+      aspect-ratio: 0.75;
+      object-fit: cover;
+      pointer-events: none;
+      opacity: 0;
+      border-radius: 20px;
+
+      transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+
+      &:global(.visible) {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+  .information {
+    width: 100%;
+    height: 10%;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font);
+    color: map-get($primary, "default");
+
+    .icons {
+      display: flex;
+      gap: 20px;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: var(--display);
+      font-style: italic;
+      color: map-get($primary, "highlight");
+    }
+  }
+
+  &:first-of-type {
+    margin-left: 100px;
+  }
+}

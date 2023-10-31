@@ -1,0 +1,58 @@
+@use "../../../../../variables.scss" as *;
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image {
+  max-height: 80vh;
+  max-width: 50vw;
+  object-fit: cover;
+}
+
+.aside {
+  min-width: 20vw;
+  height: 80vh;
+  background-color: map-get($background, "700");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  button,
+  a {
+    width: 80% !important;
+  }
+}
+
+.figure {
+  height: 80vh;
+  background-color: map-get($primary, "500");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .image {
+    max-height: 40vh;
+    max-width: 80vw;
+  }
+
+  .aside {
+    min-width: 80vw;
+    height: 20vh;
+  }
+
+  .figure {
+    height: 20vh;
+  }
+}

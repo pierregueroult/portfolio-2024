@@ -1,10 +1,24 @@
 import prisma from "../../prisma";
+import { Photo, Edit } from "@prisma/client";
 
-export default function getImageData(id: string) {
-  var imageData = prisma.gallery.findUnique({
+export default async function getImageData(id: string): Promise<Photo | Edit> {
+  const photo: Photo | null = await prisma.photo.findUnique({
     where: {
       id: id,
     },
   });
-  return imageData;
+
+  const edit: Edit | null = await prisma.edit.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  if (photo) {
+    return photo;
+  } else if (edit) {
+    return edit;
+  } else {
+    throw new Error("Image not found");
+  }
 }

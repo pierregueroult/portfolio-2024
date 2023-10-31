@@ -16,7 +16,7 @@ interface TableProps {
 export default function Table({ title, head, data }: TableProps): JSX.Element {
   return (
     <Fragment>
-      <h2>{title}</h2>
+      <h2 className={styles.title}>{title}</h2>
       <table className={styles.table}>
         <thead>
           <tr>

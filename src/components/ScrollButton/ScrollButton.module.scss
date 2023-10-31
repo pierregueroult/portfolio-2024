@@ -1,0 +1,55 @@
+@use "../../app/variables.scss" as *;
+
+.scrollDown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: fit-content;
+  padding: 1rem 1.5rem;
+  // border: map-get($primary, "highlight") 3px solid;
+  color: map-get($primary, "default");
+  cursor: pointer;
+
+  &:hover {
+    path {
+      animation: scrollIconAnimation 2s ease-in-out infinite;
+    }
+  }
+
+  span {
+    font-family: var(--font);
+    font-size: 1.5rem;
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@keyframes scrollIconAnimation {
+  0% {
+    transform: translateY(0rem);
+  }
+
+  48% {
+    transform: translateY(1.5rem);
+  }
+  49% {
+    transform: translateY(1.5rem);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-1.5rem);
+    opacity: 0;
+  }
+  51% {
+    transform: translateY(-1.5rem);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0rem);
+  }
+}

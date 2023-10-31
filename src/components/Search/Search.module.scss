@@ -5,15 +5,13 @@
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  border-radius: 0.5rem;
-  border: map-get($primary, "default") solid 2px;
   height: 35px;
 
   svg {
-    color: map-get($primary, "default");
-    margin: 5px;
-    height: 18px;
-    width: 18px;
+    color: map-get($primary, "highlight");
+    margin: 5px 10px 5px 5px;
+    height: 1.4rem;
+    width: 1.4rem;
   }
 }
 
@@ -21,17 +19,9 @@
   background-color: transparent;
   border: none;
   color: map-get($primary, "default");
-  font-family: var(--font);
-  font-size: 1rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
   outline: none;
-}
-
-.shortcut {
-  color: map-get($primary, "default");
-  background-color: map-get($background, "default");
-  font-family: var(--font);
-  font-size: 1rem;
-  margin-right: 10px;
-  cursor: pointer;
-  user-select: none;
+  width: fit-content;
 }

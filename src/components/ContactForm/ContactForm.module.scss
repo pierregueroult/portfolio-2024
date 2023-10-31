@@ -1,0 +1,183 @@
+@use "../../app/variables.scss" as *;
+
+.form {
+  width: 35vw;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10%;
+
+  @media screen and (max-width: 1000px) {
+    width: 80vw;
+    height: fit-content;
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: 550px) {
+    padding-bottom: 10rem;
+  }
+
+  label span,
+  p span:first-of-type {
+    color: map-get($danger, "400");
+  }
+}
+
+.information {
+  width: 45%;
+  font-family: var(--font);
+  position: relative;
+
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
+
+  input:focus + label,
+  input:valid + label {
+    transform: translateY(-2rem);
+    font-size: 1rem;
+    color: map-get($primary, "highlight");
+  }
+
+  label {
+    pointer-events: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: map-get($primary, "default");
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px map-get($primary, "highlight") solid;
+    background-color: transparent;
+    height: 3rem;
+    font-size: 1.2rem;
+    outline: none;
+    color: map-get($primary, "default");
+  }
+}
+
+.text {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 2rem;
+  position: relative;
+
+  @media screen and (max-width: 1000px) {
+    width: 45%;
+  }
+
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
+
+  textarea:focus + label,
+  textarea:valid + label {
+    transform: translateY(-2rem);
+    color: map-get($primary, "highlight");
+    font-size: 1rem;
+  }
+
+  label {
+    width: 100%;
+    font-size: 1.2rem;
+    color: map-get($primary, "default");
+    font-family: var(--font);
+    pointer-events: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    line-height: 3rem;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: map-get($primary, "default");
+  }
+
+  textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px map-get($primary, "highlight") solid;
+    background-color: transparent;
+    font-family: var(--font);
+    font-size: 1.2rem;
+    outline: none;
+    color: map-get($primary, "default");
+    margin-top: 1rem;
+    resize: vertical;
+    max-height: 20vh;
+  }
+}
+
+.submit {
+  width: 45%;
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  font-size: 1.2rem;
+  background-color: map-get($primary, "default");
+  height: 3rem;
+  color: map-get($background, "default");
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease-in-out, letter-spacing 0.3s ease-in-out;
+
+  &:hover {
+    background-color: map-get($primary, "highlight");
+    letter-spacing: 0.1rem;
+  }
+}
+
+.legal {
+  text-wrap: wrap;
+  font-size: 0.8rem;
+  color: map-get($primary, "faded");
+  text-align: center;
+
+  font-family: var(--display);
+
+  a {
+    color: map-get($primary, "highlight");
+    text-decoration: underline;
+  }
+}
+
+.legalContainer {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  margin-top: 1rem;
+}
+
+.submitContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column-reverse;
+    width: 45%;
+
+    .legalContainer,
+    .submit {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
+}

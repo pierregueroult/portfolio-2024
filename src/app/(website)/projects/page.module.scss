@@ -1,0 +1,42 @@
+@use "../../variables.scss" as *;
+
+.intro {
+  width: 100vw;
+  max-width: 1400px;
+  padding: 20px;
+  height: 60vh;
+  margin: 0 auto;
+
+  > div {
+    margin: 4rem auto;
+  }
+}
+
+.outro {
+  width: 100vw;
+  max-width: 1400px;
+  padding: 20px 20px 0 20px;
+  height: 60vh;
+  margin: 0 auto;
+  background-color: red;
+}
+
+.title {
+  font-size: 7rem;
+  font-weight: bold;
+  color: map-get($primary, "default");
+  font-family: var(--font);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.8;
+  width: fit-content;
+  margin: 5rem auto;
+
+  span {
+    color: map-get($primary, "highlight");
+    font-family: var(--display);
+    text-transform: lowercase;
+    font-style: italic;
+    font-size: 5rem;
+  }
+}
