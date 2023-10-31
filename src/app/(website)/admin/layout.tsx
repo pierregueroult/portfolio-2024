@@ -1,8 +1,6 @@
 import styles from "./layout.module.scss";
 import Link from "next/link";
 
-import AnimationWrapper from "@/components/AnimationWrapper/AnimationWrapper";
-
 interface AdminLayoutProps {
   children: React.ReactNode;
 }
