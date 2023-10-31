@@ -80,7 +80,13 @@ export default async function Home(): Promise<JSX.Element> {
             </ScrollToButton>
           </div>
           <div className={styles.landingImage}>
-            <Image src="/images/me/impressionism.png" width={500} height={700} alt="Me" />
+            <Image
+              src="/images/me/impressionism.png"
+              width={290}
+              height={435}
+              alt="Photo de Pierre Guéroult en style impressionniste"
+              priority={true}
+            />
           </div>
         </div>
       </section>

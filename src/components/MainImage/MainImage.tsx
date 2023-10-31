@@ -46,6 +46,8 @@ export default function MainImage(props: MainImageProps): React.ReactNode {
       height={props.height}
       alt={props.alt}
       className={props.className}
+      priority={true}
+      quality={100}
     />
   );
 }

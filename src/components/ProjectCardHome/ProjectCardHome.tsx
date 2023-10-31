@@ -17,10 +17,11 @@ export default function ProjectCardHome({ project }: ProjectCardHomeProps) {
         <div className={styles.imageContainer}>
           <Image
             src={project.thumbnailImage}
-            width={1920 / 2}
-            height={960 / 2}
             alt={project.title}
             className={styles.image}
+            width={500}
+            height={665}
+            quality={100}
           />
         </div>
         <div className={styles.content}>
