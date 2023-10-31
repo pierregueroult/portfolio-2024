@@ -5,6 +5,7 @@ import Modal from "@/components/Modal/Modal";
 import Button from "@/components/Button/Button";
 import ModalButton from "@/components/Button/CloseModalButton";
 import Table from "@/components/Table/Table";
+import { Photo, Edit } from "@prisma/client";
 
 interface ImageProps {
   params: {
@@ -13,7 +14,7 @@ interface ImageProps {
 }
 
 export default async function ImageModal({ params: { id } }: ImageProps) {
-  const image = await getImageData(id);
+  const image: Photo = await getImageData(id);
 
   if (!image) {
     throw new Error("Image not found");
@@ -24,8 +25,8 @@ export default async function ImageModal({ params: { id } }: ImageProps) {
       <article className={styles.container}>
         <figure className={styles.figure}>
           <Image
-            src={`/gallery/${image.image}`}
-            alt={image.image}
+            src={`/gallery/${image.imagePath}`}
+            alt={image.title}
             width={1200}
             height={1500}
             className={styles.image}
@@ -59,9 +60,10 @@ export default async function ImageModal({ params: { id } }: ImageProps) {
               },
             ]}
           />
+
           <Button
             text="Pleine résolution"
-            href={`/gallery/${image.image}`}
+            href={`/gallery/${image.imagePath}`}
             variant="success"
             size="medium"
             blank={true}
