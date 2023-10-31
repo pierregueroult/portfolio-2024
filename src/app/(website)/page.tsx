@@ -106,7 +106,7 @@ export default async function Home(): Promise<JSX.Element> {
           </p>
           <div className={styles.buttonContainer}>
             <ScrollToButton target="#projects">
-              <span>Découvrir mes derniers projects</span>
+              <span>Découvrir mes derniers projets</span>
               <svg
                 className={styles.arrow}
                 xmlns="http://www.w3.org/2000/svg"

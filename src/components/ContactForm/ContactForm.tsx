@@ -1,8 +1,7 @@
 "use client";
 
 import styles from "./ContactForm.module.scss";
-import { useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -19,16 +18,16 @@ export default function ContactForm() {
 
     const json = await response.json();
 
-    console.log(json);
-
     if (!json.error) {
-      toast.success(json.message);
+      (await import("react-toastify")).default.toast.success(json.message);
       form.reset();
     } else if (json.error) {
-      toast.error(json.message);
+      (await import("react-toastify")).default.toast.error(json.message);
       console.log(e);
     } else {
-      toast.error("Une erreur est survenue, veuillez réessayer plus tard.");
+      (await import("react-toastify")).toast.error(
+        "Une erreur est survenue, veuillez réessayer plus tard.",
+      );
     }
   };
 

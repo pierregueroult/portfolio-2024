@@ -12,6 +12,7 @@
     "postinstall": "npx prisma generate"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^14.0.1",
     "@prisma/client": "^5.5.2",
     "@types/gtag.js": "^0.0.17",
     "@vercel/analytics": "^1.1.1",

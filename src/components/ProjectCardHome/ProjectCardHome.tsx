@@ -1,7 +1,3 @@
-"use client";
-// dependencies
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 // styles
 import styles from "./ProjectCardHome.module.scss";
 // components
@@ -9,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 // types
 import { ProjectWithToolsAndWorkers } from "@/types/ProjectWithToolsAndWorkers";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectCardHomeProps {
   project: ProjectWithToolsAndWorkers;
