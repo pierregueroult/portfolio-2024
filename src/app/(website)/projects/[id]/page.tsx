@@ -3,10 +3,39 @@ import getProject from "@/contents/getProject";
 import Image from "next/image";
 import ProjectImage from "@/components/ProjectImage/ProjectImage";
 import { Fragment } from "react";
+import type { Metadata, ResolvingMetadata } from "next";
 
 interface ProjectProps {
   params: {
     id: string;
+  };
+  // searchParams: {
+  //   [key: string]: string | string[] | undefined;
+  // };
+}
+
+export async function generateMetadata(
+  { params: { id } }: ProjectProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const project = await getProject(id);
+
+  if (project === null) {
+    throw new Error(`Project ${id} not found`);
+  }
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `${project.title}`,
+    description: `Projet du portfolio de Pierre Guéroult 🤓 : ${project.description}`,
+    openGraph: {
+      images: [project.thumbnailImage, ...previousImages],
+    },
+    authors: project.workers.map(content => ({
+      name: content.worker.firstName,
+      url: content.worker.websiteUrl || content.worker.linkedInUrl,
+    })),
   };
 }
 
@@ -160,9 +189,9 @@ export default async function Project({ params: { id } }: ProjectProps) {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       >
                         <polyline points="16 18 22 12 16 6" />
                         <polyline points="8 6 2 12 8 18" />
@@ -178,9 +207,9 @@ export default async function Project({ params: { id } }: ProjectProps) {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       >
                         <circle cx="12" cy="12" r="10" />
                         <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
