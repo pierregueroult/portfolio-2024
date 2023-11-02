@@ -19,11 +19,10 @@ export default function ContactForm() {
     const json = await response.json();
 
     if (!json.error) {
-      (await import("react-toastify")).default.toast.success(json.message);
+      (await import("react-toastify")).toast.success(json.message);
       form.reset();
     } else if (json.error) {
-      (await import("react-toastify")).default.toast.error(json.message);
-      console.log(e);
+      (await import("react-toastify")).toast.error(json.message);
     } else {
       (await import("react-toastify")).toast.error(
         "Une erreur est survenue, veuillez réessayer plus tard.",

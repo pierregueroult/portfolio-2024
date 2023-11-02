@@ -3,21 +3,14 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import styles from "./ProjectList.module.scss";
-import Link from "next/link";
-import Image from "next/image";
 
 import { useLayoutEffect, useRef, useState } from "react";
-import ProjectIllustration from "../ProjectIllustrations/ProjectIlustrations";
 import { Project, WorkerInProject, ToolInProject } from "@prisma/client";
 import ProjectCard from "../ProjectCard/ProjectCard";
+import { ProjectsWithToolsAndWorkers } from "@/types/ProjectWithToolsAndWorkers";
 
 interface ProjectListProps {
-  projects: Array<
-    Project & {
-      workers: WorkerInProject[];
-      tools: ToolInProject[];
-    }
-  >;
+  projects: ProjectsWithToolsAndWorkers;
 }
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,18 +19,24 @@ export default function ProjectList({ projects }: ProjectListProps): React.React
   useLayoutEffect(() => {
     const panels = gsap.utils.toArray(`.project-panel`);
 
-    let ctx = gsap.context(() => {
-      gsap.to(panels, {
-        scrollTrigger: {
-          trigger: `.${styles.container}`,
-          start: "top top",
-          end: "+=1600",
-          scrub: 1.2,
-          pin: true,
-          anticipatePin: 1,
-        },
-        xPercent: -100 * (panels.length - 1),
-        ease: "none",
+    let ctx: gsap.Context = gsap.context(() => {
+      let mm: gsap.MatchMedia = gsap.matchMedia();
+
+      mm.add("(min-width: 950px)", () => {
+        const panelTween = gsap.to(panels, {
+          scrollTrigger: {
+            trigger: `.${styles.container}`,
+            start: "top top",
+            end: "+=1600",
+            scrub: 1.2,
+            pin: true,
+            anticipatePin: 1,
+          },
+          xPercent: -100 * (panels.length - 1),
+          ease: "none",
+        });
+
+        return () => panelTween.kill();
       });
     });
 

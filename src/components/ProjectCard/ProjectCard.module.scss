@@ -31,6 +31,14 @@
   overflow: hidden;
   aspect-ratio: 0.75;
 
+  @media screen and (max-width: 950px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 70%;
+  }
+
   .link {
     width: 100%;
     height: 100%;
@@ -96,20 +104,43 @@
     font-family: var(--font);
     color: map-get($primary, "default");
 
+    @media screen and (max-width: 890px) {
+      height: auto;
+    }
+
     .icons {
       display: flex;
       gap: 20px;
+
+      @media screen and (max-width: 890px) {
+        display: none;
+      }
 
       div {
         display: flex;
         align-items: center;
         gap: 5px;
+
+        @media screen and (max-width: 950px) {
+          gap: 2px;
+        }
+
+        svg {
+          @media screen and (max-width: 950px) {
+            width: 20px;
+            height: 20px;
+          }
+        }
       }
     }
 
     h2 {
       font-size: 1.5rem;
       font-weight: 600;
+
+      @media screen and (max-width: 950px) {
+        font-size: 1.2rem;
+      }
     }
 
     p {
@@ -118,10 +149,18 @@
       font-family: var(--display);
       font-style: italic;
       color: map-get($primary, "highlight");
+
+      @media screen and (max-width: 950px) {
+        font-size: 0.9rem;
+      }
     }
   }
 
   &:first-of-type {
     margin-left: 100px;
+
+    @media screen and (max-width: 950px) {
+      margin-left: 0;
+    }
   }
 }

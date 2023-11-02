@@ -1,15 +1,12 @@
-import { Project, Worker, WorkerInProject, Tool, ToolInProject } from "@prisma/client";
 import styles from "./ProjectCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import ProjectIllustration from "../ProjectIllustrations/ProjectIlustrations";
+import { ProjectWithToolsAndWorkers } from "@/types/ProjectWithToolsAndWorkers";
 
 interface ProjectCardProps {
   videoEnabled: boolean;
-  project: Project & {
-    workers: WorkerInProject[];
-    tools: ToolInProject[];
-  };
+  project: ProjectWithToolsAndWorkers;
 }
 
 export default function ProjectCard({ project, videoEnabled }: ProjectCardProps) {

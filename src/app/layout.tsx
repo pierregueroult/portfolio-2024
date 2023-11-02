@@ -61,21 +61,6 @@ export const metadata: Metadata = {
     "Rouen",
   ],
   referrer: "origin",
-  themeColor: [
-    {
-      media: "(prefers-color-scheme: light)",
-      color: "#ae9f86",
-    },
-    {
-      media: "(prefers-color-scheme: dark)",
-      color: "#766953",
-    },
-  ],
-  colorScheme: "dark",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
   creator: "Pierre Guéroult",
   publisher: "Pierre Guéroult",
   robots: {

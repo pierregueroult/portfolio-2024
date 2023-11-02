@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import ButtonLoader from "../ButtonLoader/ButtonLoader";
 
 import styles from "./Newsletter.module.scss";
@@ -13,39 +13,40 @@ export default function Newsletter(): React.ReactNode {
     e.preventDefault();
     if (isLoading) return;
     setIsLoading(true);
+    const Toast = await import("react-toastify");
     if (!inputRef.current || !inputRef.current.value) {
-      toast.error("🤔 Erreur de chargement");
+      Toast.toast.error("🤔 Erreur de chargement");
       setIsLoading(false);
       return;
     }
     const email = inputRef.current.value;
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!regex.test(email)) {
-      toast.error("✉️ Adresse e-mail invalide");
+      Toast.toast.error("✉️ Adresse e-mail invalide");
       setIsLoading(false);
       return;
     }
     const message = await fetch(`/api/register?mail=${email}`);
     const json = await message.json();
     if (json.message == "error") {
-      toast.error("🤔 Erreur de chargement");
+      Toast.toast.error("🤔 Erreur de chargement");
       setIsLoading(false);
       return;
     } else if (json.message == "already") {
-      toast.error("🤓 Vous êtes déjà inscrit");
+      Toast.toast.error("🤓 Vous êtes déjà inscrit");
       setIsLoading(false);
       return;
     } else if (json.message == "success") {
-      toast.success("✉️ Vous êtes bien inscrit");
+      Toast.toast.success("✉️ Vous êtes bien inscrit");
       inputRef.current.value = "";
       setIsLoading(false);
       return;
     } else if (json.message == "mail error") {
-      toast.error("🤔 Erreur avec le mail de confirmation");
+      Toast.toast.error("🤔 Erreur avec le mail de confirmation");
       setIsLoading(false);
       return;
     } else {
-      toast.error("🤔 Erreur de chargement");
+      Toast.toast.error("🤔 Erreur de chargement");
       setIsLoading(false);
       return;
     }

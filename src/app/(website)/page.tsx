@@ -18,6 +18,8 @@ import getTechs from "@/contents/getTechs";
 import getProjects from "@/contents/getProjects";
 import getDiplomas from "@/contents/getDiploma";
 import getExperiences from "@/contents/getExperiences";
+// utils
+import sortTechsByType from "@/utils/sortTechsByType";
 // types
 import { Tech } from "@prisma/client";
 import { ProjectsWithToolsAndWorkers } from "@/types/ProjectWithToolsAndWorkers";
@@ -26,16 +28,21 @@ import { Diplomas, Diploma } from "@/contents/getDiploma";
 import { Experiences, Experience } from "@/contents/getExperiences";
 
 export default async function Home(): Promise<JSX.Element> {
+  // récupération des données fixes
   const topics: string[] = getTopics();
-  const techs: { [key: string]: Tech[] } | Tech[] = await getTechs({ byType: true });
-  if (Array.isArray(techs)) throw new Error("Techs should be an object");
   const diplomas: Diplomas = getDiplomas();
   const experiences: Experiences = getExperiences();
+  // récupération des données dynamiques (base de données)
+  const techs: Tech[] | null = await getTechs();
+  var projects: ProjectsWithToolsAndWorkers | null = await getProjects(4);
 
-  var projects: ProjectsWithToolsAndWorkers = await getProjects(4);
+  // vérification des données récupérées
+  if (!techs || !projects) throw new Error("Error database connection");
 
-  // projects = [...projects, ...projects, ...projects, ...projects];
+  // formatage des données
+  const sortedTechs = sortTechsByType(techs);
 
+  // rendu de la page
   return (
     <main className={styles.main}>
       <MainImage
@@ -187,11 +194,11 @@ export default async function Home(): Promise<JSX.Element> {
                 </h1>
               </div>
               <ul className={styles.journeyTechs}>
-                {Object.keys(techs).map((type: string) => (
+                {Object.keys(sortedTechs).map((type: string) => (
                   <li key={type}>
                     <h2>{type}</h2>
                     <ul className="list-animation">
-                      {techs[type].map(tech => (
+                      {sortedTechs[type].map(tech => (
                         <Fragment key={tech.id}>
                           <li
                             style={

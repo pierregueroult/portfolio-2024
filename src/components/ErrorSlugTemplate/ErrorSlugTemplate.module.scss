@@ -1,4 +1,4 @@
-@use "../../../variables.scss" as *;
+@use "../../app/variables.scss" as *;
 
 .main {
   min-height: calc(100vh - 100px);
@@ -8,7 +8,7 @@
 }
 
 .container {
-  width: 100vw;
+  width: 90vw;
   max-width: 500px;
   background-color: map-get($background, "default");
   border-radius: 20px;
@@ -23,6 +23,7 @@
     margin-bottom: 20px;
     font-family: var(--font);
     color: map-get($primary, "default");
+    text-align: center;
   }
 
   p {
@@ -33,7 +34,7 @@
     text-align: center;
 
     a {
-      color: map-get($primary, "lighter");
+      color: map-get($primary, "highlight");
       text-decoration: none;
       font-weight: 500;
 

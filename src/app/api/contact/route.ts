@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import prisma from "../../../../prisma";
 import htmlEntities from "@/utils/htmlentities";
+import sendMail from "@/utils/sendMail";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -33,6 +34,11 @@ export async function POST(req: NextRequest) {
       data: {
         ...sanitized,
       },
+    });
+    await sendMail({
+      to: process.env.ADMIN_EMAIL!,
+      subject: "Nouveau message sur pierregueroult.dev",
+      text: `Un nouveau message a été envoyé par ${sanitized.name} (${sanitized.email}) : ${sanitized.message}`,
     });
     return NextResponse.json({
       error: false,

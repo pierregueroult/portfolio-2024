@@ -5,6 +5,22 @@
   align-items: center;
   height: 100vh;
   gap: 80px;
+
+  @media screen and (max-width: 950px) {
+    flex-direction: column;
+    width: 90vw !important;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    margin: 0 auto;
+    justify-items: center;
+    row-gap: 40px;
+  }
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .link {
@@ -28,6 +44,10 @@
   p {
     font-size: 1.2rem;
     font-weight: 400;
+  }
+
+  @media screen and (max-width: 950px) {
+    display: none;
   }
 }
 

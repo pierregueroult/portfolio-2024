@@ -17,7 +17,7 @@ export default function ScrollToButton({
   const handleClick = async () => {
     const gsap = (await import("gsap")).default;
     gsap.registerPlugin((await import("gsap/dist/ScrollToPlugin")).default);
-    gsap.to(window, { duration: 1, scrollTo: { y: target, offsetY: -offset } });
+    gsap.to(window, { duration: 0.5, scrollTo: { y: target, offsetY: -offset } });
   };
 
   return (
