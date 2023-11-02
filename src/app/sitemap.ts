@@ -2,11 +2,18 @@ import { MetadataRoute } from "next";
 import getLinks from "@/contents/getLinks";
 import getProjects from "@/contents/getProjects";
 import getArticles from "@/contents/getArticles";
+import {
+  ProjectsWithToolsAndWorkers,
+  ProjectWithToolsAndWorkers,
+} from "@/types/ProjectWithToolsAndWorkers";
+import { ArticlesWithComments, ArticleWithComments } from "@/types/ArticleWithComments";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const links = getLinks();
-  const projects = await getProjects();
-  const articles = await getArticles();
+  const projects: ProjectsWithToolsAndWorkers | null = await getProjects();
+  const articles: ArticlesWithComments | null = await getArticles();
+
+  if (!projects || !articles) return [] as MetadataRoute.Sitemap;
 
   return [
     ...(links.map(link => ({
