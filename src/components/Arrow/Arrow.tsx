@@ -32,6 +32,7 @@ export default function Arrow({ children }: ArrowProps): React.ReactNode {
         },
       },
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className={`${styles.container} ${!children && styles.containerFull}`}>
