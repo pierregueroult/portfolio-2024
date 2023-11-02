@@ -3,9 +3,12 @@ import styles from "./page.module.scss";
 import BlogCard from "@/components/BlogCard/BlogCard";
 import Link from "next/link";
 import StarWarsLogo from "@/components/StarWarsLogo/StarWarsLogo";
+import { ArticlesWithComments } from "@/types/ArticleWithComments";
 
 export default async function Blog() {
-  const articles = await getArticles();
+  const articles: ArticlesWithComments | null = await getArticles();
+
+  if (!articles) throw new Error("Database error");
 
   // order articles by updatedAt
   articles.sort((a, b) => {

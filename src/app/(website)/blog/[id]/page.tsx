@@ -1,5 +1,6 @@
 import getArticle from "@/contents/getArticle";
 import styles from "./page.module.scss";
+import { ArticleWithComments } from "@/types/ArticleWithComments";
 
 interface BlogArticleProps {
   params: {
@@ -8,11 +9,9 @@ interface BlogArticleProps {
 }
 
 export default async function BlogArticle({ params: { id } }: BlogArticleProps) {
-  const article = await getArticle(id);
+  const article: ArticleWithComments | null = await getArticle(id);
 
-  if (!article || article === null) {
-    throw new Error("Article not found");
-  }
+  if (!article) throw new Error("Database error");
 
   return <main></main>;
 }

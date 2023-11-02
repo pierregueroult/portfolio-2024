@@ -1,11 +1,15 @@
+// styles
 import styles from "./page.module.scss";
+// contents
 import getImageData from "@/contents/getImageData";
+// components
 import Image from "next/image";
 import Modal from "@/components/Modal/Modal";
 import Button from "@/components/Button/Button";
 import ModalButton from "@/components/Button/CloseModalButton";
 import Table from "@/components/Table/Table";
-import { Photo, Edit } from "@prisma/client";
+// types
+import { Photo } from "@prisma/client";
 
 interface ImageProps {
   params: {
@@ -14,11 +18,11 @@ interface ImageProps {
 }
 
 export default async function ImageModal({ params: { id } }: ImageProps) {
-  const image: Photo = await getImageData(id);
+  // récupération des données de l'image
+  const image: Photo | null = await getImageData(id);
 
-  if (!image) {
-    throw new Error("Image not found");
-  }
+  // gestion d'erreur
+  if (!image) throw new Error("Image not found");
 
   return (
     <Modal>
