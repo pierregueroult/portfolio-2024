@@ -21,11 +21,11 @@ import getExperiences from "@/contents/getExperiences";
 // utils
 import sortTechsByType from "@/utils/sortTechsByType";
 // types
-import { Tech } from "@prisma/client";
-import { ProjectsWithToolsAndWorkers } from "@/types/ProjectWithToolsAndWorkers";
-import { Fragment, CSSProperties } from "react";
-import { Diplomas, Diploma } from "@/contents/getDiploma";
-import { Experiences, Experience } from "@/contents/getExperiences";
+import { type Tech } from "@prisma/client";
+import { type ProjectsWithToolsAndWorkers } from "@/types/ProjectWithToolsAndWorkers";
+import { Fragment, type CSSProperties } from "react";
+import type { Diplomas, Diploma } from "@/contents/getDiploma";
+import type { Experiences, Experience } from "@/contents/getExperiences";
 
 export default async function Home(): Promise<JSX.Element> {
   // récupération des données fixes
@@ -40,7 +40,7 @@ export default async function Home(): Promise<JSX.Element> {
   if (!techs || !projects) throw new Error("Error database connection");
 
   // formatage des données
-  const sortedTechs = sortTechsByType(techs);
+  const sortedTechs: { [key: string]: Array<Tech> } = sortTechsByType(techs);
 
   // rendu de la page
   return (

@@ -1,0 +1,171 @@
+@use "../../../variables.scss" as *;
+
+.container {
+  width: 100vw;
+  max-width: 600px;
+  padding: 1rem;
+}
+
+.search {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.close {
+  background-color: transparent;
+  color: map-get($primary, "default");
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  display: flex;
+
+  svg {
+    color: map-get($primary, "highlight");
+  }
+}
+
+.input {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  background-color: transparent;
+  color: map-get($primary, "default");
+
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.count {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: map-get($primary, "highlight");
+  margin-left: 1rem;
+  text-align: center;
+}
+
+.noItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  p {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: map-get($primary, "default");
+    margin-left: 1rem;
+    text-align: center;
+  }
+}
+
+.item {
+  width: 100%;
+  list-style: none;
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: map-get($background, "dark");
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+
+    > div {
+      display: flex;
+      align-items: center;
+
+      > svg {
+        color: map-get($primary, "highlight");
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+.list {
+  margin-top: 1rem;
+  transition: height 0.2s ease-in-out;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  color: map-get($primary, "default");
+}
+
+.titles {
+  h2 {
+    font-family: var(--font);
+    // text-transform: uppercase;
+    font-size: 1.2rem;
+    color: map-get($primary, "default");
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    font-family: var(--display);
+    font-size: 0.9rem;
+    color: map-get($primary, "highlight");
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+    font-style: italic;
+    margin-left: 0.5rem;
+  }
+}
+
+.pagination {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  color: map-get($primary, "default");
+
+  &:hover {
+    background-color: map-get($background, "dark");
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: map-get($background, "dark");
+    color: map-get($primary, "faded");
+  }
+}

@@ -1,8 +1,8 @@
 "use client";
 import styles from "./Search.module.scss";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
+import { useRouter, usePathname } from "next/navigation";
 
 interface HeaderSearchProps {
   placeholder: string;
@@ -10,37 +10,23 @@ interface HeaderSearchProps {
 }
 
 export default function HeaderSearch({ placeholder, shortcut }: HeaderSearchProps): JSX.Element {
-  const shorcutRef = useRef<HTMLParagraphElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
-  const [search, setSearch] = useState<string>("");
-  const debouncedSearch = useDebounce(search, 500);
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
+    router.push("/search", {
+      scroll: false,
+    });
+    event.target.blur();
+  };
 
   useEffect(() => {
-    var shortcutElement = shorcutRef.current!;
-    var inputElement = inputRef.current!;
+    const handleShortcut = (event: KeyboardEvent) =>
+      shortcut.includes(event.key) && inputRef.current?.focus();
 
-    function focusSearch() {
-      if (document.activeElement !== inputElement) {
-        inputElement.focus();
-      } else {
-        inputElement.blur();
-      }
-    }
+    document.addEventListener("keydown", handleShortcut);
 
-    function handleKeydown(event: KeyboardEvent) {
-      // test if the key is present in the shortcut array
-      if (shortcut.includes(event.key)) {
-        event.preventDefault();
-        focusSearch();
-      }
-    }
-
-    document.addEventListener("keypress", handleKeydown);
-
-    return () => {
-      document.removeEventListener("keypress", handleKeydown);
-    };
+    return () => document.removeEventListener("keydown", handleShortcut);
   }, [shortcut]);
 
   return (
@@ -64,7 +50,7 @@ export default function HeaderSearch({ placeholder, shortcut }: HeaderSearchProp
         className={styles.input}
         placeholder={placeholder}
         ref={inputRef}
-        onChange={event => setSearch(event.target.value)}
+        onFocus={handleFocus}
       />
     </form>
   );

@@ -1,0 +1,53 @@
+@use "../app/variables.scss" as *;
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 10rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff,
+      0 0 40px map-get($primary, "highlight"), 0 0 70px map-get($primary, "highlight"),
+      0 0 80px map-get($primary, "highlight"), 0 0 100px map-get($primary, "highlight"),
+      0 0 150px map-get($primary, "highlight");
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: map-get($primary, "default");
+    font-family: var(--font);
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+
+  a {
+    margin-top: 1rem;
+    color: map-get($primary, "highlight");
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+    text-transform: lowercase;
+    font-style: italic;
+
+    &:hover {
+      color: map-get($primary, "faded");
+    }
+  }
+}

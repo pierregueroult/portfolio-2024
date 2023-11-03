@@ -1,9 +1,9 @@
-type linkType = {
+export type linkType = {
   name: string;
   href: string;
 };
 
-type linksType = linkType[];
+export type linksType = linkType[];
 
 export default function getLinks() {
   const links: linksType = [

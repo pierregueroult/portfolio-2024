@@ -17,7 +17,7 @@ import { Tech } from "@prisma/client";
 
 // création des métadonnées de la page
 export const metadata: Metadata = {
-  title: "Projets - Pierre Guéroult 🪶",
+  title: "Projets",
   description:
     "Explorer les projets de Pierre Guéroult ⋅ Développeur full stack ⋅ Rouen et périphéries ⋅ Étudiant BUT Métiers du Multimédia et de l'Internet ⋅ Recherche de stage et d'alternance",
   keywords: [
