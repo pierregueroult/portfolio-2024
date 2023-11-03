@@ -6,9 +6,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ["picsum.photos"],
-  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

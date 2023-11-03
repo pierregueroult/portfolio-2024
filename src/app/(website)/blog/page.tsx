@@ -1,22 +1,56 @@
-import getArticles from "@/contents/getArticles";
+// styles
 import styles from "./page.module.scss";
+// contents
+import getArticles from "@/contents/getArticles";
+// components
 import BlogCard from "@/components/BlogCard/BlogCard";
-import Link from "next/link";
 import StarWarsLogo from "@/components/StarWarsLogo/StarWarsLogo";
-import { ArticlesWithComments } from "@/types/ArticleWithComments";
+import Link from "next/link";
+// types
+import { type ArticlesWithComments } from "@/types/ArticleWithComments";
+import { type Metadata } from "next";
 
-export default async function Blog() {
+// création des métadonnées de la page
+export const metadata: Metadata = {
+  title: "Blog - Pierre Guéroult 🪶",
+  description:
+    "WIP 🚧. Explorer les article du blog de Pierre Guéroult ⋅ Développeur full stack ⋅ Rouen et périphéries ⋅ Étudiant BUT Métiers du Multimédia et de l'Internet ⋅ Recherche de stage et d'alternance",
+  keywords: [
+    "Blog",
+    "Article",
+    "Pierre",
+    "Guéroult",
+    "Développeur",
+    "full stack",
+    "Étudiant",
+    "BUT",
+    "Métiers",
+    "Multimédia",
+    "Internet",
+    "Recherche",
+    "stage",
+    "alternance",
+    "web",
+    "autodidacte",
+    "Rouen",
+  ],
+};
+
+export default async function Blog(): Promise<JSX.Element> {
+  // récupération des données dynamiques (base de données)
   const articles: ArticlesWithComments | null = await getArticles();
 
+  // vérification des données récupérées
   if (!articles) throw new Error("Database error");
 
-  // order articles by updatedAt
+  // tri des articles par date de modification
   articles.sort((a, b) => {
     if (a.updateAt < b.updateAt) return 1;
     if (a.updateAt > b.updateAt) return -1;
     return 0;
   });
 
+  // rendu de la page
   return (
     <main>
       <div className="container">

@@ -16,7 +16,7 @@ export default function ProjectImage({ src, alt, className }: ProjectImageProps)
     <Image
       src={src}
       alt={alt}
-      onLoadingComplete={img => setHeight(img.naturalHeight)}
+      onLoad={img => setHeight(img.currentTarget.height)}
       width={1400}
       height={height ? height : 1400}
       className={className ? className : ""}

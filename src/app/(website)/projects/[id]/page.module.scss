@@ -1,7 +1,11 @@
 @use "../../../variables.scss" as *;
 
 .main {
-  width: calc(100vw - 20px);
+  width: 100vw;
+
+  @media screen and (max-width: 1200px) {
+    padding-top: 80px;
+  }
 }
 
 .container {
@@ -17,10 +21,23 @@
     width: 50%;
     aspect-ratio: 2;
     height: unset !important;
+
+    @media screen and (max-width: 700px) {
+      width: 80%;
+    }
   }
 
   > div {
     width: 40%;
+
+    @media screen and (max-width: 950px) {
+      width: 90%;
+      margin-bottom: 40px;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    flex-direction: column-reverse;
   }
 }
 
@@ -31,6 +48,10 @@
   font-family: var(--font);
   text-align: center;
   color: map-get($primary, "default");
+
+  @media screen and (max-width: 450px) {
+    font-size: 2rem;
+  }
 }
 
 .description {
@@ -39,8 +60,12 @@
   margin-bottom: 1rem;
   font-family: var(--font);
   text-align: center;
-  color: map-get($primary, "dark");
+  color: map-get($primary, "faded");
   margin: 0 auto;
+
+  @media screen and (max-width: 950px) {
+    font-size: 1.2rem;
+  }
 }
 
 .tools {
@@ -49,7 +74,7 @@
   margin-bottom: 1rem;
   font-family: var(--font);
   text-align: center;
-  color: map-get($primary, "dark");
+  color: map-get($primary, "default");
   margin: 0 auto;
   margin-top: 1rem;
 
@@ -60,7 +85,7 @@
     transition: color 0.2s ease-in-out;
 
     &:hover {
-      color: map-get($primary, "light");
+      color: map-get($primary, "highlight");
     }
   }
 }
@@ -76,6 +101,15 @@
       width: 100%;
       height: auto !important;
     }
+
+    @media screen and (max-width: 950px) {
+      width: 90%;
+      margin: 3rem auto;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    flex-direction: column-reverse;
   }
 
   .aside {
@@ -83,6 +117,22 @@
     position: sticky;
     height: 90vh;
     top: 5vh;
+
+    @media screen and (max-width: 1200px) {
+      top: calc(5vh + 80px);
+    }
+
+    @media screen and (max-width: 950px) {
+      position: static;
+      width: 90%;
+      margin: 0 auto;
+      height: auto;
+      top: unset;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
 
     .context {
       width: 100%;
@@ -106,6 +156,15 @@
   margin-left: 5%;
   margin-top: 0.5rem;
 
+  @media screen and (max-width: 950px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    width: 90%;
+    flex-wrap: wrap;
+  }
+
   li {
     display: flex;
     flex-direction: row;
@@ -119,8 +178,12 @@
     gap: 0.5rem;
     width: 90%;
 
+    @media screen and (max-width: 950px) {
+      width: 200px;
+    }
+
     svg {
-      color: map-get($primary, "darker");
+      color: map-get($primary, "highlight");
     }
 
     span {
@@ -132,16 +195,18 @@
 
 .role {
   font-size: 0.8rem;
-
-  color: map-get($primary, "darker");
+  color: map-get($primary, "highlight") !important;
 }
 
 .legend {
   margin-left: 5%;
   font-family: var(--font);
   font-weight: 400;
-  color: map-get($primary, "darker");
+  color: map-get($primary, "default");
   margin-top: 1rem;
+  @media screen and (max-width: 950px) {
+    text-align: center;
+  }
 }
 
 .worker {
@@ -187,6 +252,12 @@
     gap: 0.5rem;
     width: 100%;
 
+    @media screen and (max-width: 950px) {
+      width: 500px;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
     div {
       a:first-child {
         margin-right: 0.5rem;
@@ -194,7 +265,7 @@
     }
 
     svg {
-      color: map-get($primary, "darker");
+      color: map-get($primary, "faded");
     }
 
     span {
