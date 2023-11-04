@@ -43,7 +43,7 @@ export default function ProjectCard({ project, videoEnabled }: ProjectCardProps)
           </div>
           <div className={styles.icons}>
             <div>
-              <span>{project.workers.length + 1}</span>
+              <span>{project.workers.length}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
