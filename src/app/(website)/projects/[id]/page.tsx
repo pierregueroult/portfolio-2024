@@ -4,6 +4,7 @@ import Image from "next/image";
 import ProjectImage from "@/components/ProjectImage/ProjectImage";
 import { Fragment } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
+import type { ProjectWithToolsAndWorkers } from "@/types/ProjectWithToolsAndWorkers";
 
 interface ProjectProps {
   params: {
@@ -15,7 +16,7 @@ export async function generateMetadata(
   { params: { id } }: ProjectProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const project = await getProject(id);
+  const project: ProjectWithToolsAndWorkers | null = await getProject(id);
 
   if (project === null) {
     throw new Error(`Project ${id} not found`);
@@ -27,7 +28,7 @@ export async function generateMetadata(
     title: `${project.title}`,
     description: `Projet du portfolio de Pierre Guéroult 🤓 : ${project.description}`,
     openGraph: {
-      images: [project.thumbnailImage, ...previousImages],
+      images: [project.coverImage, ...previousImages],
     },
     authors: project.workers.map(content => ({
       name: content.worker.firstName,
@@ -37,7 +38,7 @@ export async function generateMetadata(
 }
 
 export default async function Project({ params: { id } }: ProjectProps) {
-  const project = await getProject(id);
+  const project: ProjectWithToolsAndWorkers | null = await getProject(id);
 
   if (project === null) {
     throw new Error(`Project ${id} not found`);
@@ -48,7 +49,7 @@ export default async function Project({ params: { id } }: ProjectProps) {
       <div className="container">
         <div className={styles.container}>
           <Image
-            src={project.thumbnailImage}
+            src={project.coverImage}
             width={1920}
             height={960}
             alt={`${project.title} thumbnail`}
@@ -192,6 +193,27 @@ export default async function Project({ params: { id } }: ProjectProps) {
                       >
                         <polyline points="16 18 22 12 16 6" />
                         <polyline points="8 6 2 12 8 18" />
+                      </svg>
+                    </a>
+                  ) : content.startsWith("https://www.figma.com") ? (
+                    <a href={content} target="_blank" rel="noopener noreferrer">
+                      <span>Voir le design</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />
+                        <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" />
+                        <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z" />
+                        <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" />
+                        <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z" />
                       </svg>
                     </a>
                   ) : content.startsWith("http") ? (

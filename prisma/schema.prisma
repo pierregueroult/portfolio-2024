@@ -53,6 +53,7 @@ model Project {
 	// miniatures
 	thumbnailImage     String // url de l'image de présentation du projet
 	thumbnailVideo		 String? // url de la vidéo de présentation du projet
+	coverImage				 String // url de l'image de couverture du projet
 	// contenu du projet
 	bannersUrls   String[] // urls des bannières du projet
 	tools         ToolInProject[]
