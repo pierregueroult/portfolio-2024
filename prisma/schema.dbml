@@ -1,0 +1,163 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Photo {
+  id String [pk]
+  imagePath String [unique, not null]
+  title String [not null]
+  description String [not null]
+  device String [not null]
+  exposure String [not null]
+  shutterSpeed String [not null]
+  aperture String [not null]
+  iso String [not null]
+  location String [not null]
+  date DateTime [not null]
+  views Int [not null, default: 0]
+  isVisible Boolean [not null]
+}
+
+Table Edit {
+  id String [pk]
+  imagePath String [unique, not null]
+  title String [not null]
+  description String [not null]
+  software String [not null]
+  isVisible Boolean [not null]
+  views Int [not null, default: 0]
+}
+
+Table Project {
+  id String [pk]
+  title String [unique, not null]
+  description String [not null]
+  context String [not null]
+  date DateTime [default: `now()`, not null]
+  type String [not null]
+  thumbnailImage String [not null]
+  thumbnailVideo String
+  coverImage String [not null]
+  bannersUrls String[] [not null]
+  tools ToolInProject [not null]
+  workers WorkerInProject [not null]
+  assets String[] [not null]
+  views Int [not null, default: 0]
+  isVisible Boolean [not null]
+  comments Comment [not null]
+}
+
+Table ToolInProject {
+  id String [pk]
+  tool Tool [not null]
+  toolId String [not null]
+  project Project [not null]
+  projectId String [not null]
+}
+
+Table Tool {
+  id String [pk]
+  name String [unique, not null]
+  icon String [not null]
+  projects ToolInProject [not null]
+}
+
+Table WorkerInProject {
+  id String [pk]
+  worker Worker [not null]
+  role String [not null, default: '']
+  workerId String [not null]
+  project Project [not null]
+  projectId String [not null]
+}
+
+Table Worker {
+  id String [pk]
+  name String [not null]
+  firstName String [not null]
+  linkedInUrl String [not null]
+  websiteUrl String
+  projects WorkerInProject [not null]
+}
+
+Table Article {
+  id String [pk]
+  title String [unique, not null]
+  image String [not null]
+  tags String[] [not null]
+  content String [not null]
+  views Int [not null, default: 0]
+  createAt DateTime [default: `now()`, not null]
+  updateAt DateTime [default: `now()`, not null]
+  comments Comment [not null]
+}
+
+Table Comment {
+  id String [pk]
+  content String [not null]
+  createAt DateTime [default: `now()`, not null]
+  updateAt DateTime [default: `now()`, not null]
+  Article Article
+  articleId String
+  Project Project
+  projectId String
+  User GithubUser
+  userId String
+}
+
+Table GithubUser {
+  id String [pk]
+  username String [unique, not null]
+  avatarUrl String [not null]
+  name String [not null]
+  comments Comment [not null]
+}
+
+Table Registered {
+  id String [pk]
+  email String [unique, not null]
+  createAt DateTime [default: `now()`, not null]
+  verified Boolean [not null, default: false]
+  verifyToken String [unique]
+}
+
+Table Contact {
+  id String [pk]
+  email String [not null]
+  name String [not null]
+  message String [not null]
+  createAt DateTime [default: `now()`, not null]
+}
+
+Table Tech {
+  id String [pk]
+  name String [unique, not null]
+  icon String [not null]
+  colorHue String [not null]
+  colorSat String [not null]
+  colorLight String [not null]
+  visible Boolean [not null, default: true]
+  type String [not null, default: 'other']
+}
+
+Table Legal {
+  id String [pk]
+  title String [unique, not null]
+  slug String [unique, not null]
+  content String [not null]
+  updateAt DateTime [default: `now()`, not null]
+}
+
+Ref: ToolInProject.toolId > Tool.id
+
+Ref: ToolInProject.projectId > Project.id
+
+Ref: WorkerInProject.workerId > Worker.id
+
+Ref: WorkerInProject.projectId > Project.id
+
+Ref: Comment.articleId > Article.id
+
+Ref: Comment.projectId > Project.id
+
+Ref: Comment.userId > GithubUser.id
