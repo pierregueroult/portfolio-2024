@@ -118,10 +118,10 @@
     width: 30%;
     position: sticky;
     height: 90vh;
-    top: 5vh;
+    top: 2vh;
 
     @media screen and (max-width: 1200px) {
-      top: calc(5vh + 80px);
+      top: calc(2vh + 80px);
     }
 
     @media screen and (max-width: 950px) {
@@ -219,9 +219,12 @@
   margin-left: 5%;
   width: 90%;
   margin-top: 0.5rem;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
 
   .asset {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 
     a {
       width: 100%;
