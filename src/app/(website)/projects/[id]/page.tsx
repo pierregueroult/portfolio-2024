@@ -57,14 +57,14 @@ export default async function Project({ params: { id } }: ProjectProps) {
           <div>
             <h1 className={styles.title}>{project.title}</h1>
             <p className={styles.description}>{project.description}</p>
-            <p className={styles.tools}>
-              Projet réalisé avec :{" "}
+            <p className={styles.tools}>Projet réalisé avec :</p>
+            <div className={styles.toolsContainer}>
               {project.tools.map(content => (
                 <Fragment key={content.id}>
                   <span>{content.tool.name}</span>
                 </Fragment>
               ))}
-            </p>
+            </div>
           </div>
         </div>
         <section className={styles.content}>

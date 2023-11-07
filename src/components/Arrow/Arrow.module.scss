@@ -39,6 +39,10 @@
 
     background-color: map-get($primary, "highlight");
   }
+
+  @media screen and (max-width: 950px) {
+    display: none;
+  }
 }
 
 .head {
@@ -59,6 +63,10 @@
     &:nth-child(2) {
       transform: scale(1, -1);
     }
+  }
+
+  @media screen and (max-width: 950px) {
+    display: none;
   }
 }
 

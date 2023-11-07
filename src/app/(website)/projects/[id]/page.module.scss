@@ -68,6 +68,31 @@
   }
 }
 
+.toolsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+
+  span {
+    color: map-get($primary, "default");
+    text-decoration: underline;
+    margin-left: 1rem;
+    transition: color 0.2s ease-in-out;
+    word-break: keep-all;
+    white-space: nowrap;
+    font-family: var(--font);
+    text-align: center;
+    color: map-get($primary, "default");
+    font-size: 1.1rem;
+
+    &:hover {
+      color: map-get($primary, "highlight");
+    }
+  }
+}
+
 .tools {
   font-size: 1.2rem;
   font-weight: 400;
@@ -77,19 +102,6 @@
   color: map-get($primary, "default");
   margin: 0 auto;
   margin-top: 1rem;
-
-  span {
-    color: map-get($primary, "default");
-    text-decoration: underline;
-    margin-left: 1rem;
-    transition: color 0.2s ease-in-out;
-    word-break: keep-all;
-    white-space: nowrap;
-
-    &:hover {
-      color: map-get($primary, "highlight");
-    }
-  }
 }
 
 .content {
