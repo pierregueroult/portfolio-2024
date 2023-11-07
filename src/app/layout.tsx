@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import GoogleAnalytics from "@/components/Analytics/Analytics";
 import Script from "next/script";
+import { ReactNode } from "react";
 
 const font: NextFontWithVariable = Raleway({
   subsets: ["latin"],
@@ -104,7 +105,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: Props): ReactNode {
   return (
     <html lang="fr" dir="ltr" className={`${font.variable} ${mono.variable} ${display.variable}`}>
       <body>

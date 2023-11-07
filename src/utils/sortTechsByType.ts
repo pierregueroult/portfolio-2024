@@ -1,4 +1,4 @@
-import { Tech } from "@prisma/client";
+import { type Tech } from "@prisma/client";
 
 type sortByTypeParam = Array<Tech>;
 

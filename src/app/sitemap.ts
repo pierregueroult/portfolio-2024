@@ -1,12 +1,12 @@
-import { MetadataRoute } from "next";
-import getLinks, { linkType, linksType } from "@/contents/getLinks";
+import type { MetadataRoute } from "next";
+import getLinks, { type linkType, type linksType } from "@/contents/getLinks";
 import getProjects from "@/contents/getProjects";
 import getArticles from "@/contents/getArticles";
-import {
+import type {
   ProjectsWithToolsAndWorkers,
   ProjectWithToolsAndWorkers,
 } from "@/types/ProjectWithToolsAndWorkers";
-import { ArticlesWithComments, ArticleWithComments } from "@/types/ArticleWithComments";
+import type { ArticlesWithComments, ArticleWithComments } from "@/types/ArticleWithComments";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const links: linksType = getLinks();

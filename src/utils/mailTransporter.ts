@@ -1,9 +1,9 @@
-import nodemailer from "nodemailer";
+import { createTransport, Transporter } from "nodemailer";
 import { google } from "googleapis";
 
 const OAuth2 = google.auth.OAuth2;
 
-const createTransporter = async (): Promise<nodemailer.Transporter | Error> => {
+const createTransporter = async (): Promise<Transporter | Error> => {
   try {
     const oauth2Client = new OAuth2(
       process.env.TRANSPORT_CLIENT_ID,
@@ -24,7 +24,7 @@ const createTransporter = async (): Promise<nodemailer.Transporter | Error> => {
       });
     });
 
-    const transporter = nodemailer.createTransport({
+    const transporter = createTransport({
       service: "gmail",
       auth: {
         type: "OAuth2",

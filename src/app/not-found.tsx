@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 export const metadata: Metadata = {
   title: "Erreur 404",
   description: "Cette page n'existe pas",
+  robots: "noindex, nofollow",
 };
 
 export default function NotFound(): JSX.Element {

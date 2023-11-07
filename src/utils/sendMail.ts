@@ -1,6 +1,5 @@
 import createTransporter from "./mailTransporter";
-import nodemailer from "nodemailer";
-import fs from "node:fs";
+import { SendMailOptions } from "nodemailer";
 
 type sendMailParams = {
   to: string;
@@ -15,7 +14,7 @@ async function sendMail(params: sendMailParams): Promise<boolean> {
     var mailOptions = {
       ...params,
       from: `🤖 de pierregueroult.dev  <${process.env.TRANSPORT_EMAIL!}>`,
-    } as nodemailer.SendMailOptions;
+    } as SendMailOptions;
 
     let transporter = await createTransporter();
 
