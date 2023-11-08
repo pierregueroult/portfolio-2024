@@ -8,6 +8,7 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import GoogleAnalytics from "@/components/Analytics/Analytics";
 import Script from "next/script";
 import { ReactNode } from "react";
+import Consent from "@/components/Consent/Consent";
 
 const font: NextFontWithVariable = Raleway({
   subsets: ["latin"],
@@ -129,8 +130,7 @@ export default function RootLayout({ children }: Props): ReactNode {
             __html: `console.log("%cHello there ! 👋", "font-size: 3rem;font-family: Courier; font-weight: 600;"); console.log("%cIf you're here, it means you're interested in the code of this website. I'm Pierre, a french web developer. If you want to know more about me, you can check my portfolio at https://pierregueroult.dev. If you want to contact me, you can send me an email at contact@pierregueroult.dev Have a nice day !", "font-size: 1.2rem;");`,
           }}
         ></Script>
-        <VercelAnalytics />
-        <GoogleAnalytics />
+        <Consent />
       </body>
     </html>
   );
