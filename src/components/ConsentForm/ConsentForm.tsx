@@ -37,9 +37,10 @@ export default function ConsentForm({ handleChange, handleForm }: ConsentFormPro
           <div className={styles.toggleContainer}>
             <button
               id="google_analytics"
-              onClick={() =>
-                setValues((prev: ConsentObject) => ({ ...prev, google: !prev.google }))
-              }
+              onClick={e => {
+                e.preventDefault();
+                setValues((prev: ConsentObject) => ({ ...prev, google: !prev.google }));
+              }}
               className={`${styles.toggle} ${values.google ? styles.on : ""}`}
               value={`${values.google}`}
             >
@@ -52,9 +53,10 @@ export default function ConsentForm({ handleChange, handleForm }: ConsentFormPro
           <div className={styles.toggleContainer}>
             <button
               id="vercel_analytics"
-              onClick={() =>
-                setValues((prev: ConsentObject) => ({ ...prev, vercel: !prev.vercel }))
-              }
+              onClick={e => {
+                e.preventDefault();
+                setValues((prev: ConsentObject) => ({ ...prev, vercel: !prev.vercel }));
+              }}
               className={`${styles.toggle} ${values.vercel ? styles.on : ""}`}
               value={`${values.vercel}`}
             >
