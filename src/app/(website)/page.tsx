@@ -188,10 +188,10 @@ export default async function Home(): Promise<JSX.Element> {
           <div className={styles.journeyContainer}>
             <div className={styles.journeyLeft}>
               <div className={styles.journeyTitle}>
-                <h1>
+                <h2>
                   Compétences <br />
                   <span>et expériences</span>
-                </h1>
+                </h2>
               </div>
               <ul className={styles.journeyTechs}>
                 {Object.keys(sortedTechs).map((type: string) => (

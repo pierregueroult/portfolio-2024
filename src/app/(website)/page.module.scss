@@ -22,6 +22,11 @@
   flex-direction: column;
   align-items: center;
 
+  @media screen and (max-width: 600px) {
+    height: auto;
+    max-height: 100vh;
+  }
+
   .landingContainer {
     display: flex;
     justify-content: center;
@@ -31,6 +36,7 @@
     @media screen and (max-width: 600px) {
       background-color: map-get($background, "dark");
       border-radius: 5px;
+      margin-bottom: 2rem;
     }
 
     .landingText {
@@ -40,7 +46,7 @@
       align-items: center;
 
       @media screen and (max-width: 600px) {
-        width: 100%;
+        width: 90%;
       }
 
       p {
@@ -230,6 +236,10 @@
       text-align: left;
       line-height: 0.8;
 
+      @media screen and (max-width: 450px) {
+        font-size: 3rem;
+      }
+
       span {
         color: map-get($primary, "highlight");
         font-family: var(--display);
@@ -237,6 +247,11 @@
         text-transform: lowercase;
         font-size: 3rem;
         margin-left: 1rem;
+
+        @media screen and (max-width: 450px) {
+          font-size: 2rem;
+          margin-left: 0;
+        }
       }
     }
 
@@ -524,14 +539,18 @@
   font-weight: 800;
   margin: 4rem 0 4rem 4rem;
 
+  @media screen and (max-width: 1100px) {
+    margin: 2rem 0 2rem 0;
+    // width: 50%;
+  }
+
   @media screen and (max-width: 950px) {
     padding: 0;
     font-size: 3rem;
   }
 
-  @media screen and (max-width: 1100px) {
-    margin: 2rem 0 2rem 0;
-    // width: 50%;
+  @media screen and (max-width: 450px) {
+    font-size: 2.6rem;
   }
 
   span {
@@ -545,6 +564,11 @@
 
     @media screen and (max-width: 950px) {
       font-size: 2rem;
+    }
+
+    @media screen and (max-width: 450px) {
+      font-size: 1.6rem;
+      margin-left: 0;
     }
   }
 }
@@ -576,6 +600,10 @@
     // width: 50%;
     flex-direction: column;
     margin: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
   }
 
   h2 {
@@ -708,9 +736,11 @@
   }
 }
 
-.journey > :first-child,
-.projects > :first-child {
-  padding-top: 80px;
+@media screen and (min-width: 600px) {
+  .journey > :first-child,
+  .projects > :first-child {
+    padding-top: 80px;
+  }
 }
 
 .arrowLink {
