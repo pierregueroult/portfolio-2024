@@ -136,7 +136,7 @@ export default async function Home(): Promise<JSX.Element> {
                 <path d="m12 5 7 7-7 7" />
               </svg>
             </ScrollToButton>
-            <ScrollToButton target="#skills">
+            <ScrollToButton target="#journey" offset={1600}>
               <span>Découvrir mes compétences</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
