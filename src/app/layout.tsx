@@ -4,8 +4,9 @@ import { Metadata } from "next";
 import { Playfair_Display, Raleway, Red_Hat_Mono } from "next/font/google";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { ToastContainer } from "react-toastify";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
-import GoogleAnalytics from "@/components/Analytics/Analytics";
+// import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+// import GoogleAnalytics from "@/components/Analytics/Analytics";
+// import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from "next/script";
 import { ReactNode } from "react";
 import Consent from "@/components/Consent/Consent";

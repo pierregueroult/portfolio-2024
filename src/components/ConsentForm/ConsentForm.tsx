@@ -7,11 +7,11 @@ import { ConsentObject } from "@/types/ConsentObject";
 import { motion } from "framer-motion";
 
 interface ConsentFormProps {
-  handleChange: ({ vercel, google }: ConsentObject) => void;
-  handleForm: ({ vercel, google }: ConsentObject) => void;
+  handleChange: ({ vercel, google, speedinsight }: ConsentObject) => void;
+  handleForm: ({ vercel, google, speedinsight }: ConsentObject) => void;
 }
 
-const consentDefault: ConsentObject = { vercel: true, google: true };
+const consentDefault: ConsentObject = { vercel: true, google: true, speedinsight: true };
 
 export default function ConsentForm({ handleChange, handleForm }: ConsentFormProps): JSX.Element {
   const [form, setForm] = useState<boolean>(false);
@@ -66,6 +66,22 @@ export default function ConsentForm({ handleChange, handleForm }: ConsentFormPro
               Vercel Analytics
             </label>
           </div>
+          <div className={styles.toggleContainer}>
+            <button
+              id="speed_insights"
+              onClick={e => {
+                e.preventDefault();
+                setValues((prev: ConsentObject) => ({ ...prev, speedinsight: !prev.speedinsight }));
+              }}
+              className={`${styles.toggle} ${values.speedinsight ? styles.on : ""}`}
+              value={`${values.speedinsight}`}
+            >
+              <span className={styles.toggleCircle}></span>
+            </button>
+            <label htmlFor="speed_insights" className={styles.toggleLabel}>
+              Speed Insights
+            </label>
+          </div>
           <div className={styles.buttons}>
             <button onClick={() => setForm(false)} className={styles.button}>
               Annuler
@@ -91,7 +107,7 @@ export default function ConsentForm({ handleChange, handleForm }: ConsentFormPro
               Personnaliser
             </button>
             <button
-              onClick={() => handleChange({ vercel: true, google: true })}
+              onClick={() => handleChange({ vercel: true, google: true, speedinsight: true })}
               className={`${styles.button} ${styles.accept}`}
             >
               Accepter
