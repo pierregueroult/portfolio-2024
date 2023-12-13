@@ -45,6 +45,7 @@ Table Project {
   views Int [not null, default: 0]
   isVisible Boolean [not null]
   comments Comment [not null]
+  priority Int [not null, default: 0]
 }
 
 Table ToolInProject {

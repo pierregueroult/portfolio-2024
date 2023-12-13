@@ -22,6 +22,9 @@ export default async function getProjects(
         comments: true,
       },
       take: count || undefined,
+      orderBy: {
+        priority: "desc",
+      },
     });
 
     return projects;
