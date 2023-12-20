@@ -9,7 +9,7 @@ export default function Footer(): React.ReactNode {
   const socialMedia = getSocialMedia();
   const links = getLinks();
 
-  links.push({ name: "Admin", href: "/admin" }, { name: "CV", href: "/curriculum-vitae" });
+  links.push({ name: "Admin", href: "/admin" });
 
   return (
     <footer className={`${styles.footer} footer`}>

@@ -10,8 +10,8 @@ export default function getLinks() {
     { name: "Accueil", href: "/" },
     { name: "Projets", href: "/projects" },
     { name: "CV", href: "/curriculum-vitae" },
-    // { name: "Blog", href: "/blog" },
     // { name: "Gallerie", href: "/gallery" },
+    // { name: "Blog", href: "/blog" },
   ];
   return links;
 }
